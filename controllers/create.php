@@ -1,22 +1,23 @@
 <?php
 
-die('create');
-
-require 'functions.php';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	$title = $_POST['title'];
 	$content = $_POST['content'];
 
-	$id = saveNote($title, $content);
+	$id = $database->insert('notes', [
+		'title' => $title,
+		'content' => $content,
+		'created_at' => date('Y-m-d H:i:s'),
+		'updated_at' => date('Y-m-d H:i:s'),
+	]);
 
 	if (!is_null($id))
 	{
-		header('Location: /index.php?id=' . $id);
+		header('Location: /?id=' . $id);
 		exit;
 	} else {
-		header('Location: /index.php');
+		header('Location: /');
 		exit;
 	}
 }
