@@ -1,9 +1,5 @@
 <?php
 
-die('edit');
-
-require 'functions.php';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	$id = $_POST['id'];
@@ -24,11 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	exit;
 }
 
-$the_note = getNoteById($_GET['id']);
+$the_note = $database->fetchOne('notes', [
+	'id' => $_GET['id']
+]);
 
 if (!$the_note)
 {
-	header('Location: /index.php');
+	header('Location: /');
 	exit;
 }
 
