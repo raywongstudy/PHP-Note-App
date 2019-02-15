@@ -72,6 +72,24 @@ nav ul li.danger a {
 	color: red;
 }
 
+nav ul li:not(:last-child) {
+	padding-bottom: 1em;
+}
+
+nav ul li a {
+	text-decoration: none;
+	display: block;
+}
+
+nav ul li a span.title {
+	text-decoration: underline;
+}
+
+nav ul li a span.excerpt {
+	display: block;
+	color: #999;
+}
+
 form {
 	display: flex;
 	flex-direction: column;

@@ -21,7 +21,12 @@
 					<?php foreach ($notes as $note): ?>
 					<li>
 						<a href="edit.php?id=<?php echo $note['id'] ?>">
-							<?php echo $note['title'] ?>
+							<span class="title">
+								<?php echo $note['title'] ?>
+							</span>
+							<span class="excerpt">
+								<?php echo excerpt($note['content']) ?>
+							</span>
 						</a>
 					</li>
 					<?php endforeach; ?>
