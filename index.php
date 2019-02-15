@@ -2,12 +2,9 @@
 
 require 'functions.php';
 
-require 'database/Connection.php';
-require 'database/QueryBuilder.php';
+$database = require 'bootstrap.php';
 
-$pdo = Connection::make();
-$query = new QueryBuilder($pdo);
-$notes = $query->fetchAll('notes');
+$notes = $database->fetchAll('notes');
 
 print_r($notes);
 exit;
