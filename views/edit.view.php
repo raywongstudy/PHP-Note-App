@@ -35,7 +35,7 @@
 							<button type="submit" name="action" value="update">Update</button>
 						</div>
 						<div class="col-50 text-right">
-							<button type="submit" class="danger" name="action" value="delete">Delete</button>
+							<button type="submit" class="danger" name="action" value="delete" onclick="return confirm('Are you sure want to delete this?')">Delete</button>
 						</div>
 					</div>
 				</form>
