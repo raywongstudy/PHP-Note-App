@@ -48,6 +48,7 @@ function getNotes($path = null)
 		$content = join("\n", $rows);
 
 		array_push($results, [
+			'id' => str_replace('.txt', '', $filename),
 			'title' => $title,
 			'content' => $content,
 		]);

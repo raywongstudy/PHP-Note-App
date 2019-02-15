@@ -17,6 +17,14 @@
 					<li>
 						<a href="create.php">+ Create new note</a>
 					</li>
+
+					<?php foreach ($notes as $note): ?>
+					<li>
+						<a href="edit.php?id=<?php echo $note['id'] ?>">
+							<?php echo $note['title'] ?>
+						</a>
+					</li>
+					<?php endforeach; ?>
 				</ul>
 			</nav>
 			<main>
