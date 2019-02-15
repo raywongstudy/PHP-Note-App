@@ -7,23 +7,29 @@ function getFiles($path)
 
 function saveNote($filename, $title, $content)
 {
-	$filepath = __DIR__ . '/notes/' . $filename;
-	$data = $title . "\n" . $content;
+	if (isValidFilename($filename))
+	{
+		$filepath = __DIR__ . '/notes/' . $filename;
+		$data = $title . "\n" . $content;
 
-	file_put_contents($filepath, $data, LOCK_EX);
+		file_put_contents($filepath, $data, LOCK_EX);
+	}
 }
 
 function updateNote($id, $title, $content)
 {
 	$filename = $id . '.txt';
-
-	$filepath = __DIR__ . '/notes/' . $filename;
-
-	if (file_exists($filepath))
+	
+	if (isValidFilename($filename))
 	{
-		$data = $title . "\n" . $content;
+		$filepath = __DIR__ . '/notes/' . $filename;
 
-		file_put_contents($filepath, $data, LOCK_EX);
+		if (file_exists($filepath))
+		{
+			$data = $title . "\n" . $content;
+
+			file_put_contents($filepath, $data, LOCK_EX);
+		}
 	}
 }
 
@@ -31,12 +37,20 @@ function deleteNote($id)
 {
 	$filename = $id . '.txt';
 
-	$filepath = __DIR__ . '/notes/' . $filename;
-
-	if (file_exists($filepath))
+	if (isValidFilename($filename))
 	{
-		@unlink($filepath);
+		$filepath = __DIR__ . '/notes/' . $filename;
+
+		if (file_exists($filepath))
+		{
+			@unlink($filepath);
+		}
 	}
+}
+
+function isValidFilename($filename)
+{
+	return preg_match('/^\d+\.txt$/', $filename);
 }
 
 function getNotes($path = null)
