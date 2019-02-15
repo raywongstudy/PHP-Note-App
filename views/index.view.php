@@ -23,7 +23,7 @@
 					</li>
 
 					<?php foreach ($notes as $note): ?>
-					<li>
+					<li class="<?php echo (isset($_GET['id']) && $_GET['id'] == $note['id']) ? 'active' : '' ?>">
 						<a href="index.php?id=<?php echo $note['id'] ?>">
 							<span class="title">
 								<?php echo $note['title'] ?>

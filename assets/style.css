@@ -85,6 +85,10 @@ nav ul li:not(:last-child) {
 	padding-bottom: 1em;
 }
 
+nav ul li.active a, nav ul li.active a span.excerpt {
+	color: #000;
+}
+
 nav ul li a {
 	text-decoration: none;
 	display: block;
