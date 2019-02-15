@@ -11,13 +11,14 @@ function saveNote($title, $content)
 {
 	global $pdo;
 
-	$stmt = $pdo->prepare('INSERT INTO notes (title, content, created_at, updated_at) VALUES (?, ?, ?, ?)')
-				->execute([
-					$title,
-					$content,
-					date('Y-m-d H:i:s'),
-					date('Y-m-d H:i:s'),
-				]);
+	$stmt = $pdo->prepare('INSERT INTO notes (title, content, created_at, updated_at) VALUES (?, ?, ?, ?)');
+	
+	$stmt->execute([
+		$title,
+		$content,
+		date('Y-m-d H:i:s'),
+		date('Y-m-d H:i:s'),
+	]);
 
 	return $pdo->lastInsertId();
 }
