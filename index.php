@@ -1,19 +1,27 @@
 <?php
 
-require 'functions.php';
+// require 'functions.php';
 
 $database = require 'bootstrap.php';
 
-$notes = $database->fetchAll('notes');
+$routes = [
+	'' => 'controllers/index.php',
+	'create' => 'controllers/create.php',
+	'edit' => 'controllers/edit.php',
+];
 
-print_r($notes);
-exit;
+$uri = $_SERVER['REQUEST_URI'];
+$uri = trim($uri, '/');
 
-$notes = getNotes();
+var_dump($routes[$uri]);
 
-if (isset($_GET['id']))
-{
-	$the_note = getNoteById($_GET['id']);
-}
+// $notes = $database->fetchAll('notes');
 
-require 'views/index.view.php';
+// $notes = getNotes();
+
+// if (isset($_GET['id']))
+// {
+// 	$the_note = getNoteById($_GET['id']);
+// }
+
+// require 'views/index.view.php';
