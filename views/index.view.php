@@ -42,6 +42,9 @@
 				<div class="content">
 					<?php echo nl2br($the_note['content']) ?>
 				</div>
+				<div class="updated-at">
+					Updated at: <?php echo $the_note['updated_at'] ?>
+				</div>
 
 				<a href="edit.php?id=<?php echo $the_note['id'] ?>">Edit</a>
 				<?php else: ?>

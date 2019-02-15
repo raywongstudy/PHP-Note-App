@@ -67,6 +67,13 @@ footer {
 	padding-bottom: 3em;
 }
 
+.flex main .updated-at {
+	font-size: .8em;
+	font-style: italic;
+	color:  #999;
+	padding-bottom: 1em;
+}
+
 nav ul {
 	margin: 0;
 	padding: 0;

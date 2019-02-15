@@ -95,6 +95,7 @@ function getNotes($path = null)
 			'id' => str_replace('.txt', '', $filename),
 			'title' => $title,
 			'content' => $content,
+			'updated_at' => date('Y-m-d H:i a', filemtime($filepath)),
 		]);
 	}
 
