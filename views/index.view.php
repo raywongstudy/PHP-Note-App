@@ -7,7 +7,11 @@
 <body>
 	<div class="container">
 		<header>
-			<h1>The Note App.</h1>
+			<h1>
+				<a href="index.php">
+					The Note App.
+				</a>
+			</h1>
 			<span>A Simple PHP File Based Note App</span>
 		</header>
 
