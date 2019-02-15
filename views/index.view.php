@@ -39,7 +39,7 @@
 					<?php echo nl2br($the_note['content']) ?>
 				</div>
 
-				<a href="edit.php?<?php echo $the_note['id'] ?>">Edit</a>
+				<a href="edit.php?id=<?php echo $the_note['id'] ?>">Edit</a>
 				<?php else: ?>
 				Please select a note from the left
 				<?php endif; ?>
