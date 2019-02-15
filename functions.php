@@ -2,11 +2,6 @@
 
 require 'database.php';
 
-function getFiles($path)
-{
-	return array_diff(scandir($path), array('.', '..'));
-}
-
 function saveNote($title, $content)
 {
 	global $pdo;
@@ -46,11 +41,6 @@ function deleteNote($id)
 			@unlink($filepath);
 		}
 	}
-}
-
-function isValidFilename($filename)
-{
-	return preg_match('/^\d+\.txt$/', $filename);
 }
 
 function getNotes($path = null)
