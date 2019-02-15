@@ -20,7 +20,7 @@
 				</ul>
 			</nav>
 			<main>
-				<form>
+				<form action="create.php" method="post">
 					<div class="row">
 						<label for="title">Title</label>
 						<input type="text" id="title" placeholder="The Note Title">
