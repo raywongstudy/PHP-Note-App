@@ -2,7 +2,7 @@
 
 	<header>
 		<h1>
-			<a href="index.php">
+			<a href="/">
 				The Note App.
 			</a>
 		</h1>
@@ -18,7 +18,7 @@
 
 				<?php foreach ($notes as $note): ?>
 				<li class="<?php echo (isset($_GET['id']) && $_GET['id'] == $note->id) ? 'active' : '' ?>">
-					<a href="/view/<?php echo $note->id ?>">
+					<a href="/?id=<?php echo $note->id ?>">
 						<span class="title">
 							<?php echo $note->title ?>
 						</span>
@@ -32,15 +32,15 @@
 		</nav>
 		<main>
 			<?php if (isset($the_note) && !is_null($the_note)): ?>
-			<h2><?php echo $the_note['title'] ?></h2>
+			<h2><?php echo $the_note->title ?></h2>
 			<div class="content">
-				<?php echo nl2br($the_note['content']) ?>
+				<?php echo nl2br($the_note->content) ?>
 			</div>
 			<div class="updated-at">
-				Updated at: <?php echo $the_note['updated_at'] ?>
+				Updated at: <?php echo $the_note->updated_at ?>
 			</div>
 
-			<a href="edit.php?id=<?php echo $the_note['id'] ?>">Edit</a>
+			<a href="/edit?id=<?php echo $the_note->id ?>">Edit</a>
 			<?php else: ?>
 			Please select a note from the left
 			<?php endif; ?>
