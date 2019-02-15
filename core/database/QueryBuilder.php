@@ -34,4 +34,23 @@ class QueryBuilder
 
 		return $stmt->fetch(PDO::FETCH_OBJ);
 	}
+
+	public function insert($table, $fields = [])
+	{
+		$keys = array_keys($fields);
+		$values_sql = [];
+
+		foreach ($keys as $key)
+		{
+			array_push($values_sql, ":{$key}");
+		}
+
+		$fields_sql = join(', ', $keys);
+		$values_sql = join(', ', $values_sql);
+
+		$stmt = $this->pdo->prepare("INSERT INTO {$table} ({$fields_sql}) VALUES ({$values_sql})");
+		$stmt->execute($fields);
+
+		return $this->pdo->lastInsertId();
+	}
 }
