@@ -12,6 +12,7 @@ class Router
 	public static function resolve()
 	{
 		$uri = $_SERVER['REQUEST_URI'];
+		$uri = strtok($uri, '?');
 
 		if (strlen($uri) > 1) {
 			$uri = rtrim($uri, '/');
