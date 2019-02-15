@@ -53,4 +53,31 @@ class QueryBuilder
 
 		return $this->pdo->lastInsertId();
 	}
+
+	public function update($table, $fields = [], $criteria = [])
+	{
+		$fields_keys = array_keys($fields);
+		$criteria_keys = array_keys($criteria);
+		$fields_sql = [];
+		$criteria_sql = [];
+
+		foreach ($fields_keys as $key)
+		{
+			array_push($fields_sql, "`{$key}` = :{$key}");
+		}
+
+		foreach ($criteria_keys as $key)
+		{
+			array_push($criteria_sql, "`{$key}` = :{$key}");
+		}
+
+		$fields_sql = join(', ', $fields_sql);
+		$criteria_sql = join(' AND ', $criteria_sql);
+
+		$stmt = $this->pdo->prepare("UPDATE {$table} SET {$fields_sql} WHERE {$criteria_sql}");
+
+		$stmt->execute(array_merge($fields, $criteria));
+
+		return $this->pdo->lastInsertId();
+	}
 }
