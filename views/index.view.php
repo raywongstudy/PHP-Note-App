@@ -31,7 +31,7 @@
 			</ul>
 		</nav>
 		<main>
-			<?php if (isset($the_note) && !is_null($the_note)): ?>
+			<?php if (isset($the_note) && $the_note): ?>
 			<h2><?php echo $the_note->title ?></h2>
 			<div class="content">
 				<?php echo nl2br($the_note->content) ?>
