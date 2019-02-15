@@ -17,13 +17,13 @@
 				</li>
 
 				<?php foreach ($notes as $note): ?>
-				<li class="<?php echo (isset($_GET['id']) && $_GET['id'] == $note['id']) ? 'active' : '' ?>">
-					<a href="index.php?id=<?php echo $note['id'] ?>">
+				<li class="<?php echo (isset($_GET['id']) && $_GET['id'] == $note->id) ? 'active' : '' ?>">
+					<a href="/view/<?php echo $note->id ?>">
 						<span class="title">
-							<?php echo $note['title'] ?>
+							<?php echo $note->title ?>
 						</span>
 						<span class="excerpt">
-							<?php echo excerpt($note['content']) ?>
+							<?php echo excerpt($note->content) ?>
 						</span>
 					</a>
 				</li>
