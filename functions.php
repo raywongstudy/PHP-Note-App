@@ -64,8 +64,7 @@ function getNotes($path = null)
 {
 	global $pdo;
 
-	$stmt = $pdo->prepare('SELECT * FROM notes');
-	$stmt->execute();
+	$stmt = $pdo->query('SELECT * FROM notes');
 
 	$notes = $stmt->fetchAll(PDO::FETCH_OBJ);
 
