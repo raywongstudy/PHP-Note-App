@@ -1,6 +1,6 @@
 <?php
 
-require './functions.php';
+require 'functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -31,4 +31,4 @@ if (!$the_note)
 	exit;
 }
 
-require './views/edit.view.php';
+require 'views/edit.view.php';

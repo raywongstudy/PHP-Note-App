@@ -1,6 +1,6 @@
 <?php
 
-require './functions.php';
+require 'functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -21,4 +21,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 }
 
-require './views/create.view.php';
+require 'views/create.view.php';
