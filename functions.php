@@ -1,23 +1,25 @@
 <?php
 
+require 'database.php';
+
 function getFiles($path)
 {
 	return array_diff(scandir($path), array('.', '..'));
 }
 
-function saveNote($filename, $title, $content)
+function saveNote($title, $content)
 {
-	if (isValidFilename($filename))
-	{
-		$filepath = __DIR__ . '/notes/' . $filename;
-		$data = $title . "\n" . $content;
+	global $pdo;
 
-		file_put_contents($filepath, $data, LOCK_EX);
+	$stmt = $pdo->prepare('INSERT INTO notes (title, content, created_at, updated_at) VALUES (?, ?, ?, ?)')
+				->execute([
+					$title,
+					$content,
+					date('Y-m-d H:i:s'),
+					date('Y-m-d H:i:s'),
+				]);
 
-		return str_replace('.txt', '', $filename);
-	}
-
-	return null;
+	return $pdo->lastInsertId();
 }
 
 function updateNote($id, $title, $content)
