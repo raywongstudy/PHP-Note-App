@@ -1,5 +1,7 @@
 <?php
 
+die('create');
+
 require 'functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')

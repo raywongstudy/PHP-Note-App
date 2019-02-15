@@ -1,5 +1,7 @@
 <?php
 
+die('index');
+
 require 'functions.php';
 
 // $notes = $database->fetchAll('notes');
