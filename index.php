@@ -2,6 +2,7 @@
 
 require './functions.php';
 
-// $notes = getFiles('./notes');
+$notes = getNotes();
+print_r($notes);
 
 require './views/index.view.php';
