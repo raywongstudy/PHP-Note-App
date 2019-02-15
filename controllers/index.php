@@ -1,16 +1,7 @@
 <?php
 
-die('index');
+require 'core/functions.php';
 
-require 'functions.php';
-
-// $notes = $database->fetchAll('notes');
-
-$notes = getNotes();
-
-if (isset($_GET['id']))
-{
-	$the_note = getNoteById($_GET['id']);
-}
+$notes = $database->fetchAll('notes');
 
 require 'views/index.view.php';
