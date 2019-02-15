@@ -8,13 +8,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	if ($_POST['action'] == 'update')
 	{
-		updateNote($id, $title, $content);
+		$database->update('notes', [
+			'title' => $title,
+			'content' => $content
+		], [
+			'id' => $id
+		]);
 
-		header('Location: /index.php?id=' . $id);
+		header('Location: /?id=' . $id);
 	} else if ($_POST['action'] == 'delete')
 	{
 		deleteNote($id);
-		header('Location: /index.php');
+		header('Location: /');
 	}
 
 	exit;
