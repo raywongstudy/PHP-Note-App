@@ -2,7 +2,11 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-	echo 'This is a POST Request';
+	$title = $_POST['title'];
+	$content = $_POST['content'];
+
+	var_dump($title, $content);
+
 	exit;
 }
 

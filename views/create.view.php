@@ -23,11 +23,11 @@
 				<form action="create.php" method="post">
 					<div class="row">
 						<label for="title">Title</label>
-						<input type="text" id="title" placeholder="The Note Title">
+						<input type="text" id="title" name="title" placeholder="The Note Title">
 					</div>
 					<div class="row">
 						<label for="content">Content</label>
-						<textarea id="content" placeholder="Content"></textarea>
+						<textarea id="content" name="content" placeholder="Content"></textarea>
 					</div>
 					<div class="row">
 						<button type="submit">Save</button>
