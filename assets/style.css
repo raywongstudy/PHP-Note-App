@@ -58,6 +58,10 @@ footer {
 	width: 70%;
 }
 
+.flex main .content {
+	padding-bottom: 3em;
+}
+
 nav ul {
 	margin: 0;
 	padding: 0;

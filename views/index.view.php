@@ -20,7 +20,7 @@
 
 					<?php foreach ($notes as $note): ?>
 					<li>
-						<a href="edit.php?id=<?php echo $note['id'] ?>">
+						<a href="index.php?id=<?php echo $note['id'] ?>">
 							<span class="title">
 								<?php echo $note['title'] ?>
 							</span>
@@ -33,7 +33,16 @@
 				</ul>
 			</nav>
 			<main>
-				Contents Here
+				<?php if (isset($the_note) && !is_null($the_note)): ?>
+				<h2><?php echo $the_note['title'] ?></h2>
+				<div class="content">
+					<?php echo nl2br($the_note['content']) ?>
+				</div>
+
+				<a href="edit.php?<?php echo $the_note['id'] ?>">Edit</a>
+				<?php else: ?>
+				Please select a note from the left
+				<?php endif; ?>
 			</main>
 		</div>
 

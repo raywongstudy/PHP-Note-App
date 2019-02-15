@@ -70,3 +70,8 @@ function excerpt($content)
 
 	return mb_substr($content, 0, 50, 'utf-8') . '...';
 }
+
+function getNoteById($notes, $id)
+{
+	return $notes[array_search($id, array_column($notes, 'id'))];
+}
