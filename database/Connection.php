@@ -2,10 +2,17 @@
 
 class Connection
 {
-	public static function make()
+	public static function make($db_config)
 	{
 		try {
-			return new PDO('mysql:host=127.0.0.1;dbname=note_app;charset=utf8mb4', 'note_app', 'dbpass');
+			return new PDO(
+				$db_config['driver'] . ':' .
+				'host=' . $db_config['db_host'] . ';' .
+				'dbname=' . $db_config['db_name'] . ';' .
+				'charset=' . $db_config['charset'],
+				$db_config['db_user'],
+				$db_config['db_pass']
+			);
 		} catch (Exception $e) {
 			die( $e->getMessage() );
 		}
