@@ -18,7 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		header('Location: /?id=' . $id);
 	} else if ($_POST['action'] == 'delete')
 	{
-		deleteNote($id);
+		$database->delete('notes', [
+			'id' => $id,
+		]);
+
 		header('Location: /');
 	}
 
