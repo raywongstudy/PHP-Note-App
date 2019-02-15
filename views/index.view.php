@@ -6,7 +6,7 @@
 				The Note App.
 			</a>
 		</h1>
-		<span>A Simple PHP File Based Note App</span>
+		<span>A Simple Database Based Note App</span>
 	</header>
 
 	<div class="flex">
