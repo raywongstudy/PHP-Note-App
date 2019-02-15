@@ -1,8 +1,6 @@
 <?php
 
-$database = require 'bootstrap.php';
-
-require 'Router.php';
+require 'bootstrap.php';
 
 Router::bind('/', 'controllers/index.php');
 Router::bind('/create', 'controllers/create.php');
