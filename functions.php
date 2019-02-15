@@ -30,17 +30,10 @@ function updateNote($id, $title, $content)
 
 function deleteNote($id)
 {
-	$filename = $id . '.txt';
+	global $pdo;
 
-	if (isValidFilename($filename))
-	{
-		$filepath = __DIR__ . '/notes/' . $filename;
-
-		if (file_exists($filepath))
-		{
-			@unlink($filepath);
-		}
-	}
+	$stmt = $pdo->prepare('DELETE FROM notes WHERE id = ?');
+	$stmt->execute([$id]);
 }
 
 function getNotes($path = null)
