@@ -73,5 +73,11 @@ function excerpt($content)
 
 function getNoteById($notes, $id)
 {
-	return $notes[array_search($id, array_column($notes, 'id'))];
+	$key = array_search($id, array_column($notes, 'id'));
+
+	if ($key === false) {
+		return null;
+	}
+
+	return $notes[$key];
 }
