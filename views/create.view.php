@@ -9,7 +9,7 @@
 		<nav>
 			<ul>
 				<li>
-					<a href="index.php">&laquo; Go Back</a>
+					<a href="/">&laquo; Go Back</a>
 				</li>
 			</ul>
 		</nav>
