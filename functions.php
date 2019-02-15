@@ -62,43 +62,22 @@ function isValidFilename($filename)
 
 function getNotes($path = null)
 {
-	if (is_null($path))
-	{
-		$path = __DIR__ . '/notes';
-	}
+	global $pdo;
 
-	$filenames = getFiles($path);
+	$stmt = $pdo->prepare('SELECT * FROM notes');
+	$stmt->execute();
+
+	$notes = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 	$results = [];
 
-	foreach ($filenames as $filename)
+	foreach ($notes as $note)
 	{
-		$filepath = $path . '/' . $filename;
-
-		if (!file_exists($filepath))
-		{
-			continue;
-		}
-
-		$file_content = file_get_contents($filepath);
-		$rows = explode("\n", $file_content);
-
-		if (count($rows) < 2)
-		{
-			// Note should be corrupted
-			continue;
-		}
-
-		$title = $rows[0];
-
-		unset($rows[0]);
-		$content = join("\n", $rows);
-
 		array_push($results, [
-			'id' => str_replace('.txt', '', $filename),
-			'title' => $title,
-			'content' => $content,
-			'updated_at' => date('Y-m-d H:i a', filemtime($filepath)),
+			'id' => $note->id,
+			'title' => $note->title,
+			'content' => $note->content,
+			'updated_at' => $note->updated_at,
 		]);
 	}
 
