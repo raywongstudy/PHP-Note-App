@@ -13,7 +13,7 @@
 		<nav>
 			<ul>
 				<li>
-					<a href="create.php">+ Create new note</a>
+					<a href="/create">+ Create new note</a>
 				</li>
 
 				<?php foreach ($notes as $note): ?>
