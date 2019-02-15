@@ -80,13 +80,12 @@ function excerpt($content)
 	return mb_substr($content, 0, 50, 'utf-8') . '...';
 }
 
-function getNoteById($notes, $id)
+function getNoteById($id)
 {
-	$key = array_search($id, array_column($notes, 'id'));
+	global $pdo;
 
-	if ($key === false) {
-		return null;
-	}
+	$stmt = $pdo->prepare('SELECT * FROM notes WHERE id = ?');
+	$stmt->execute([$id]);
 
-	return $notes[$key];
+	return $stmt->fetch();
 }

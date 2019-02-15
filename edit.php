@@ -22,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	exit;
 }
 
-$notes = getNotes();
-$the_note = getNoteById($notes, $_GET['id']);
+$the_note = getNoteById($_GET['id']);
 
 if (!$the_note)
 {
