@@ -25,19 +25,12 @@ function saveNote($title, $content)
 
 function updateNote($id, $title, $content)
 {
-	$filename = $id . '.txt';
-	
-	if (isValidFilename($filename))
-	{
-		$filepath = __DIR__ . '/notes/' . $filename;
+	global $pdo;
 
-		if (file_exists($filepath))
-		{
-			$data = $title . "\n" . $content;
+	$stmt = $pdo->prepare('UPDATE notes SET title = ?, content = ? WHERE id = ?');
+	$stmt->execute([$title, $content, $id]);
 
-			file_put_contents($filepath, $data, LOCK_EX);
-		}
-	}
+	return $pdo->lastInsertId();
 }
 
 function deleteNote($id)
