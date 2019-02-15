@@ -13,6 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		updateNote($id, $title, $content);
 
 		header('Location: /index.php?id=' . $id);
+	} else if ($_POST['action'] == 'delete')
+	{
+		deleteNote($id);
+		header('Location: /index.php');
 	}
 
 	exit;

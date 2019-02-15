@@ -27,6 +27,18 @@ function updateNote($id, $title, $content)
 	}
 }
 
+function deleteNote($id)
+{
+	$filename = $id . '.txt';
+
+	$filepath = __DIR__ . '/notes/' . $filename;
+
+	if (file_exists($filepath))
+	{
+		@unlink($filepath);
+	}
+}
+
 function getNotes($path = null)
 {
 	if (is_null($path))
