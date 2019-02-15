@@ -80,4 +80,23 @@ class QueryBuilder
 
 		return $this->pdo->lastInsertId();
 	}
+
+	public function delete($table, $criteria = [])
+	{
+		$criteria_keys = array_keys($criteria);
+		$criteria_sql = [];
+
+		foreach ($criteria_keys as $key)
+		{
+			array_push($criteria_sql, "`{$key}` = :{$key}");
+		}
+
+		$criteria_sql = join(' AND ', $criteria_sql);
+
+		$stmt = $this->pdo->prepare("DELETE FROM {$table} WHERE {$criteria_sql}");
+
+		$stmt->execute($criteria);
+
+		return $this->pdo->lastInsertId();
+	}
 }
