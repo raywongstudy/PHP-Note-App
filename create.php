@@ -9,11 +9,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	$filename = time() . '.txt';
 	
-	saveNote($filename, $title, $content);
+	$id = saveNote($filename, $title, $content);
 
-	header('Location: /index.php');
-
-	exit;
+	if (!is_null($id))
+	{
+		header('Location: /index.php?id=' . $id);
+		exit;
+	} else {
+		header('Location: /index.php');
+		exit;
+	}
 }
 
 require './views/create.view.php';

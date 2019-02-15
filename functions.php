@@ -13,7 +13,11 @@ function saveNote($filename, $title, $content)
 		$data = $title . "\n" . $content;
 
 		file_put_contents($filepath, $data, LOCK_EX);
+
+		return str_replace('.txt', '', $filename);
 	}
+
+	return null;
 }
 
 function updateNote($id, $title, $content)
