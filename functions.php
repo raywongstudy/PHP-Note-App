@@ -13,6 +13,20 @@ function saveNote($filename, $title, $content)
 	file_put_contents($filepath, $data, LOCK_EX);
 }
 
+function updateNote($id, $title, $content)
+{
+	$filename = $id . '.txt';
+
+	$filepath = __DIR__ . '/notes/' . $filename;
+
+	if (file_exists($filepath))
+	{
+		$data = $title . "\n" . $content;
+
+		file_put_contents($filepath, $data, LOCK_EX);
+	}
+}
+
 function getNotes($path = null)
 {
 	if (is_null($path))
