@@ -9,7 +9,7 @@ class NoteController
 			'id' => $_GET['id']
 		]);
 
-		return view('index');
+		return view('index', compact('notes', 'the_note'));
 	}
 
 	public function create()

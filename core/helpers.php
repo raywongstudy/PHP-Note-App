@@ -1,6 +1,6 @@
 <?php
 
-function view($file)
+function view($file, $vars)
 {
 	$path = __DIR__ . '/../views/' . $file . '.view.php';
 
@@ -10,6 +10,8 @@ function view($file)
 			"view {$file} could not be found"
 		);
 	}
+
+	extract($vars);
 
 	require $path;
 }
