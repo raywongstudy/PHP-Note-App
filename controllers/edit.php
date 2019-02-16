@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
+if (Request::is('POST'))
 {
 	$id = $_POST['id'];
 	$title = $_POST['title'];

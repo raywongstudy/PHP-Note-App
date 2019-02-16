@@ -1,0 +1,14 @@
+<?php
+
+class Request
+{
+	public static function is($type)
+	{
+		if (strtoupper($_SERVER['REQUEST_METHOD']) === strtoupper($type))
+		{
+			return true;
+		}
+
+		return false;
+	}
+}
