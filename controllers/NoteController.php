@@ -4,10 +4,14 @@ class NoteController
 {
 	public function index()
 	{
-		$notes = App::resolve('database')->fetchAll('notes');
-		$the_note = App::resolve('database')->fetchOne('notes', [
+		$notes = App::resolve('Note')->fetchAll('notes');
+		$the_note = App::resolve('Note')->fetchOne('notes', [
 			'id' => $_GET['id']
 		]);
+
+		// Comparing two resolve results, should be two different resource (object), this is what we want to prevent conflict when there are more than 1 model
+		var_dump(App::resolve('database'));
+		var_dump(App::resolve('Note'));
 
 		require 'views/index.view.php';
 	}
