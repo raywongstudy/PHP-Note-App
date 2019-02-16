@@ -20,10 +20,24 @@ class Router
 
 		if (isset(self::$routes[$uri]))
 		{
-			return self::$routes[$uri];
+			return self::callAction(
+				...explode('@', self::$routes[$uri])
+			);
 		}
 
 		throw new Exception('404 Not Found');
+	}
+
+	protected static function callAction($controller, $method)
+	{
+		if (!method_exists($controller, $method))
+		{
+			throw new Exception(
+				"{$controller} does not respond to method {$method}"
+			);
+		}
+
+		return (new $controller)->$method();
 	}
 
 }
