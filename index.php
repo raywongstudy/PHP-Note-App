@@ -8,12 +8,6 @@ App::bind('database', new QueryBuilder(
 	Connection::make(App::resolve('config')['database'])
 ));
 
-Router::get('/', 'NoteController@index');
-
-Router::get('/create', 'NoteController@create');
-Router::post('/create', 'NoteController@postCreate');
-
-Router::get('/edit', 'NoteController@edit');
-Router::post('/edit', 'NoteController@postEdit');
+require 'routes.php';
 
 Router::resolve($uri);
