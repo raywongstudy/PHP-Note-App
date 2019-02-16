@@ -6,8 +6,8 @@ class NoteController
 {
 	public function index()
 	{
-		$notes = $database->fetchAll('notes');
-		$the_note = $database->fetchOne('notes', [
+		$notes = App::resolve('database')->fetchAll('notes');
+		$the_note = App::resolve('database')->fetchOne('notes', [
 			'id' => $_GET['id']
 		]);
 
@@ -24,7 +24,7 @@ class NoteController
 		$title = $_POST['title'];
 		$content = $_POST['content'];
 
-		$id = $database->insert('notes', [
+		$id = App::resolve('database')->insert('notes', [
 			'title' => $title,
 			'content' => $content,
 			'created_at' => date('Y-m-d H:i:s'),
@@ -43,7 +43,7 @@ class NoteController
 
 	public function edit()
 	{
-		$the_note = $database->fetchOne('notes', [
+		$the_note = App::resolve('database')->fetchOne('notes', [
 			'id' => $_GET['id']
 		]);
 
@@ -64,7 +64,7 @@ class NoteController
 
 		if ($_POST['action'] == 'update')
 		{
-			$database->update('notes', [
+			App::resolve('database')->update('notes', [
 				'title' => $title,
 				'content' => $content
 			], [
@@ -74,7 +74,7 @@ class NoteController
 			header('Location: /?id=' . $id);
 		} else if ($_POST['action'] == 'delete')
 		{
-			$database->delete('notes', [
+			App::resolve('database')->delete('notes', [
 				'id' => $id,
 			]);
 
