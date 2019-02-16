@@ -2,8 +2,17 @@
 
 class Note
 {
-	public function foo()
+	public function excerpt()
 	{
-		return 'bar';
+		$content = strip_tags($this->content);
+		$content = str_replace("\n", ' ', $content);
+		$content = trim($content);
+
+		if (mb_strlen($content, 'utf-8') <= 50)
+		{
+			return $content;
+		}
+
+		return mb_substr($content, 0, 50, 'utf-8') . '...';
 	}
 }
