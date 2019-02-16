@@ -5,9 +5,22 @@ class NoteController
 	public function index()
 	{
 		$notes = App::resolve('Note')->fetchAll('notes');
-		$the_note = App::resolve('Note')->fetchOne('notes', [
-			'id' => request('id')
-		]);
+
+		$the_note = null;
+
+		if (request('id'))
+		{
+			$the_note = App::resolve('Note')->fetchOne('notes', [
+				'id' => request('id')
+			]);
+
+			if (!$the_note)
+			{
+				throw new Exception(
+					"Requested note could not be found"
+				);
+			}
+		}
 
 		return view('index', compact('notes', 'the_note'));
 	}
@@ -33,7 +46,9 @@ class NoteController
 		{
 			return redirect('/?id=' . $id);
 		} else {
-			return redirect('/');
+			throw new Exception(
+				"Note could not be saved"
+			);
 		}
 	}
 
@@ -45,7 +60,9 @@ class NoteController
 
 		if (!$the_note)
 		{
-			return redirect('/');
+			throw new Exception(
+				"Requested note could not be found"
+			);
 		}
 
 		return view('edit', compact('the_note'));
@@ -76,7 +93,9 @@ class NoteController
 			return redirect('/');
 		}
 
-		exit;
+		throw new Exception(
+			"Action is not valid"
+		);
 	}
 
 }
