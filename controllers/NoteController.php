@@ -3,9 +3,9 @@
 class NoteController
 {
 	
-	public function create()
+	public function index()
 	{
-		die('create');
+		die('index');
 	}
 
 	public function create()
