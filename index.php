@@ -2,8 +2,12 @@
 
 $database = require 'core/bootstrap.php';
 
-Router::bind('/', 'NoteController@index');
-Router::bind('/create', 'NoteController@create');
-Router::bind('/edit', 'NoteController@edit');
+Router::get('/', 'NoteController@index');
+
+Router::get('/create', 'NoteController@create');
+Router::post('/create', 'NoteController@postCreate');
+
+Router::get('/edit', 'NoteController@edit');
+Router::post('/edit', 'NoteController@postEdit');
 
 Router::resolve($uri);
