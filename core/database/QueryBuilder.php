@@ -43,7 +43,11 @@ class QueryBuilder
 		$stmt = $this->pdo->prepare("SELECT * FROM {$table} WHERE {$criteria_sql}");
 		$stmt->execute($criteria);
 
-		return $stmt->fetch(PDO::FETCH_OBJ);
+		if (!is_null($this->model)) {
+			return $stmt->fetchObject($this->model);
+		} else {
+			return $stmt->fetch(PDO::FETCH_CLASS);
+		}
 	}
 
 	public function insert($table, $fields = [])
