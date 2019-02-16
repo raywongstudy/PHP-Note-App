@@ -2,10 +2,10 @@
 
 require 'vendor/autoload.php'; // composer autoload
 
-$config = require 'core/config.php';
+App::bind('config', require 'core/config.php');
 
 App::bind('database', new QueryBuilder(
-	Connection::make($config['database'])
+	Connection::make(App::resolve('config')['database'])
 ));
 
 Router::get('/', 'NoteController@index');
