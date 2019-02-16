@@ -9,10 +9,6 @@ class NoteController
 			'id' => $_GET['id']
 		]);
 
-		// Comparing two resolve results, should be two different resource (object), this is what we want to prevent conflict when there are more than 1 model
-		var_dump(App::resolve('database'));
-		var_dump(App::resolve('Note'));
-
 		require 'views/index.view.php';
 	}
 
