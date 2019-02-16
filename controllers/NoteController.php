@@ -9,7 +9,7 @@ class NoteController
 			'id' => $_GET['id']
 		]);
 
-		require 'views/index.view.php';
+		return view('index');
 	}
 
 	public function create()
