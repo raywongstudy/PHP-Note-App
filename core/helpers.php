@@ -21,3 +21,8 @@ function redirect($to)
 	header('Location: ' . $to);
 	exit;
 }
+
+function request($name, $default = null)
+{
+	return Request::get($name, $default);
+}

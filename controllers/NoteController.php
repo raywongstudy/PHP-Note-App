@@ -6,7 +6,7 @@ class NoteController
 	{
 		$notes = App::resolve('Note')->fetchAll('notes');
 		$the_note = App::resolve('Note')->fetchOne('notes', [
-			'id' => $_GET['id']
+			'id' => request('id')
 		]);
 
 		return view('index', compact('notes', 'the_note'));
@@ -19,8 +19,8 @@ class NoteController
 
 	public function postCreate()
 	{
-		$title = $_POST['title'];
-		$content = $_POST['content'];
+		$title = request('title', 'No Title');
+		$content = request('content');
 
 		$id = App::resolve('Note')->insert('notes', [
 			'title' => $title,
@@ -40,7 +40,7 @@ class NoteController
 	public function edit()
 	{
 		$the_note = App::resolve('Note')->fetchOne('notes', [
-			'id' => $_GET['id']
+			'id' => request('id')
 		]);
 
 		if (!$the_note)
@@ -53,11 +53,11 @@ class NoteController
 
 	public function postEdit()
 	{
-		$id = $_POST['id'];
-		$title = $_POST['title'];
-		$content = $_POST['content'];
+		$id = request('id');
+		$title = request('title', 'No Title');
+		$content = request('content');
 
-		if ($_POST['action'] == 'update')
+		if (request('action') == 'update')
 		{
 			App::resolve('Note')->update('notes', [
 				'title' => $title,
@@ -67,7 +67,7 @@ class NoteController
 			]);
 
 			return redirect('/?id=' . $id);
-		} else if ($_POST['action'] == 'delete')
+		} else if (request('action') == 'delete')
 		{
 			App::resolve('Note')->delete('notes', [
 				'id' => $id,
