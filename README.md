@@ -20,7 +20,7 @@ The commit history is considered to be a step-by-step tutorial to build the appl
 
 1. Please checkout with Tag `db-based`
 2. Create a database named `note_app`
-3. Create table `note_app`
+3. Create table `notes`
 ```sql
 CREATE TABLE `notes` (
   `id` int(11) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `notes` (
 
 1. Please checkout with Tag `mvc`
 2. Create a database named `note_app`
-3. Create table `note_app`
+3. Create table `notes`
 ```sql
 CREATE TABLE `notes` (
   `id` int(11) NOT NULL,
