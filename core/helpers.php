@@ -15,3 +15,9 @@ function view($file, $vars = [])
 
 	require $path;
 }
+
+function redirect($to)
+{
+	header('Location: ' . $to);
+	exit;
+}

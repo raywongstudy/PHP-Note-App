@@ -31,11 +31,9 @@ class NoteController
 
 		if (!is_null($id))
 		{
-			header('Location: /?id=' . $id);
-			exit;
+			return redirect('/?id=' . $id);
 		} else {
-			header('Location: /');
-			exit;
+			return redirect('/');
 		}
 	}
 
@@ -47,8 +45,7 @@ class NoteController
 
 		if (!$the_note)
 		{
-			header('Location: /');
-			exit;
+			return redirect('/');
 		}
 
 		return view('edit', compact('the_note'));
@@ -69,14 +66,14 @@ class NoteController
 				'id' => $id
 			]);
 
-			header('Location: /?id=' . $id);
+			return redirect('/?id=' . $id);
 		} else if ($_POST['action'] == 'delete')
 		{
 			App::resolve('Note')->delete('notes', [
 				'id' => $id,
 			]);
 
-			header('Location: /');
+			return redirect('/');
 		}
 
 		exit;
