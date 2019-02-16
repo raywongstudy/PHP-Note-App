@@ -1,7 +1,5 @@
 <?php
 
-require 'core/functions.php';
-
 class NoteController
 {
 	public function index()
