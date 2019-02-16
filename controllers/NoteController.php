@@ -14,7 +14,7 @@ class NoteController
 
 	public function create()
 	{
-		require 'views/create.view.php';
+		return view('create');
 	}
 
 	public function postCreate()
@@ -51,7 +51,7 @@ class NoteController
 			exit;
 		}
 
-		require 'views/edit.view.php';
+		return view('edit', compact('the_note'));
 	}
 
 	public function postEdit()

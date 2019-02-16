@@ -1,6 +1,6 @@
 <?php
 
-function view($file, $vars)
+function view($file, $vars = [])
 {
 	$path = __DIR__ . '/../views/' . $file . '.view.php';
 
