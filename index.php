@@ -5,4 +5,8 @@ require 'bindings.php';
 require 'routes.php';
 require 'core/helpers.php';
 
-Router::resolve($uri);
+try {
+	Router::resolve($uri);
+} catch (Exception $e) {
+	view('error', compact('e'));
+}
