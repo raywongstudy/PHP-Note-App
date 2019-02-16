@@ -2,11 +2,19 @@
 
 class Router
 {
-	static $routes = [];
+	static $routes = [
+		'GET' => [],
+		'POST' => [],
+	];
 
-	public static function bind($uri, $file)
+	public static function get($uri, $controller)
 	{
-		self::$routes[$uri] = $file;
+		self::$routes['GET'][$uri] = $controller;
+	}
+
+	public static function post($uri, $controller)
+	{
+		self::$routes['POST'][$uri] = $controller;
 	}
 
 	public static function resolve()
@@ -18,10 +26,10 @@ class Router
 			$uri = rtrim($uri, '/');
 		}
 
-		if (isset(self::$routes[$uri]))
+		if (isset(self::$routes[$_SERVER['REQUEST_METHOD']][$uri]))
 		{
 			return self::callAction(
-				...explode('@', self::$routes[$uri])
+				...explode('@', self::$routes[$_SERVER['REQUEST_METHOD']][$uri])
 			);
 		}
 
