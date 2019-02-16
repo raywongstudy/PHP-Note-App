@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 class Router
 {
 	static $routes = [
@@ -33,14 +35,16 @@ class Router
 			);
 		}
 
-		throw new Exception('404 Not Found');
+		throw new \Exception('404 Not Found');
 	}
 
 	protected static function callAction($controller, $method)
 	{
+		$controller = '\\App\\Controller\\' . $controller;
+
 		if (!method_exists($controller, $method))
 		{
-			throw new Exception(
+			throw new \Exception(
 				"{$controller} does not respond to method {$method}"
 			);
 		}

@@ -6,7 +6,7 @@ function view($file, $vars = [])
 
 	if (!file_exists($path))
 	{
-		throw new Exception(
+		throw new \Exception(
 			"view {$file} could not be found"
 		);
 	}
@@ -24,5 +24,5 @@ function redirect($to)
 
 function request($name, $default = null)
 {
-	return Request::get($name, $default);
+	return \App\Core\Request::get($name, $default);
 }

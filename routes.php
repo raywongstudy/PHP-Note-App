@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\Router;
+
 Router::get('/', 'NoteController@index');
 
 Router::get('/create', 'NoteController@create');

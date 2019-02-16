@@ -1,16 +1,18 @@
 <?php
 
+namespace App\Controller;
+
 class NoteController
 {
 	public function index()
 	{
-		$notes = App::resolve('Note')->fetchAll('notes');
+		$notes = \App::resolve('Note')->fetchAll('notes');
 
 		$the_note = null;
 
 		if (request('id'))
 		{
-			$the_note = App::resolve('Note')->fetchOne('notes', [
+			$the_note = \App::resolve('Note')->fetchOne('notes', [
 				'id' => request('id')
 			]);
 
@@ -35,7 +37,7 @@ class NoteController
 		$title = request('title', 'No Title');
 		$content = request('content');
 
-		$id = App::resolve('Note')->insert('notes', [
+		$id = \App::resolve('Note')->insert('notes', [
 			'title' => $title,
 			'content' => $content,
 			'created_at' => date('Y-m-d H:i:s'),
@@ -54,7 +56,7 @@ class NoteController
 
 	public function edit()
 	{
-		$the_note = App::resolve('Note')->fetchOne('notes', [
+		$the_note = \App::resolve('Note')->fetchOne('notes', [
 			'id' => request('id')
 		]);
 
@@ -76,7 +78,7 @@ class NoteController
 
 		if (request('action') == 'update')
 		{
-			App::resolve('Note')->update('notes', [
+			\App::resolve('Note')->update('notes', [
 				'title' => $title,
 				'content' => $content
 			], [
@@ -86,7 +88,7 @@ class NoteController
 			return redirect('/?id=' . $id);
 		} else if (request('action') == 'delete')
 		{
-			App::resolve('Note')->delete('notes', [
+			\App::resolve('Note')->delete('notes', [
 				'id' => $id,
 			]);
 
