@@ -1,6 +1,12 @@
 <?php
 
-$database = require 'core/bootstrap.php';
+require 'vendor/autoload.php'; // composer autoload
+
+$config = require 'core/config.php';
+
+App::bind('database', new QueryBuilder(
+	Connection::make($config['database'])
+));
 
 Router::get('/', 'NoteController@index');
 
