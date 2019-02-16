@@ -3,10 +3,17 @@
 class QueryBuilder
 {
 	protected $pdo;
+	protected $model;
 
-	public function __construct(PDO $pdo)
+	public function __construct(PDO $pdo, $model = null)
 	{
 		$this->pdo = $pdo;
+		$this->model = $model;
+	}
+
+	public function bindModel($model)
+	{
+		return new self($this->pdo, $model);
 	}
 	
 	public function fetchAll($table)
@@ -14,7 +21,11 @@ class QueryBuilder
 		$stmt = $this->pdo->prepare("SELECT * FROM {$table}");
 		$stmt->execute([$table]);
 
-		return $stmt->fetchAll(PDO::FETCH_OBJ);
+		if (!is_null($this->model)) {
+			return $stmt->fetchAll(PDO::FETCH_CLASS, $this->model);
+		} else {
+			return $stmt->fetchAll(PDO::FETCH_CLASS);
+		}
 	}
 
 	public function fetchOne($table, $criteria = [])
