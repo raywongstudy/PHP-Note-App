@@ -20,7 +20,7 @@
 				<li class="<?php echo (isset($_GET['id']) && $_GET['id'] == $note->id) ? 'active' : '' ?>">
 					<a href="/?id=<?php echo $note->id ?>">
 						<span class="title">
-							<?php echo $note->title ?>
+							<?php echo $note->foo() ?>
 						</span>
 						<span class="excerpt">
 							<?php echo excerpt($note->content) ?>
